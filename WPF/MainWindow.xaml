@@ -3,19 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:WPF" xmlns:system="clr-namespace:System;assembly=netstandard"
+		xmlns:dd="urn:gong-wpf-dragdrop"
+		mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="auto"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-		<Calendar />
+		<Calendar Margin="2" />
 		<Grid Grid.Row="1">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="*"/>
@@ -26,5 +27,29 @@
 			<Button Content="Metrics" Grid.Row="1" Margin="2"/>
 			<Button Content="Settings" Grid.Row="2" Margin="2"/>
 		</Grid>
+		<ScrollViewer Grid.Column="1" Grid.RowSpan="2">
+			<ItemsControl dd:DragDrop.IsDropTarget="True"
+						  dd:DragDrop.IsDragSource="True"
+						  dd:DragDrop.DropHandler="{Binding}"
+						  x:Name="blah">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<CheckBox Grid.Column="0"/>
+							<Label Grid.Column="1" Content="{Binding}"/>
+						</Grid>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
 	</Grid>
 </Window>
