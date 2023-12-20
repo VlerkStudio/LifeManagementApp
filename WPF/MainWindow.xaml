@@ -10,11 +10,11 @@
 		Width="800">
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Calendar />
@@ -35,8 +35,7 @@
 					Grid.Row="2"
 					Margin="2" />
 		</Grid>
-		<Grid Grid.Column="1" />
-		<!-- Bind c ontent of label the TextBox's Content -->
+		<!-- Bind c ontent of label the TextBox's Content --><!--
 		<Label Content="{Binding ElementName=BindingTestTextBox, Path=Text}"
 			   Grid.Column="1"
 			   Grid.Row="1"
@@ -55,7 +54,6 @@
 				 TextWrapping="Wrap"
 				 Text="TextBox"
 				 VerticalAlignment="Top"
-				 Width="120" />
-
+				 Width="120" />-->
 	</Grid>
 </Window>
